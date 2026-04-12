@@ -162,21 +162,25 @@ void TG::MovieBot::processMessage(const json& message)
 
 void TG::MovieBot::processUpdate(const json &updates)
 {
-    if (!updates.contains("result") || !updates["result"].is_array()) {
+    if (!updates.contains("result") || !updates["result"].is_array())
+    {
         return;
     }
 
-    for (const auto& update : updates["result"]) {
+    for (const auto& update : updates["result"])
+    {
         int64_t update_id = update["update_id"];
 
         // Пропускаем старые обновления
-        if (update_id <= last_update_id_) {
+        if (update_id <= last_update_id_)
+        {
             continue;
         }
 
         // Обрабатываем сообщение
-        if (update.contains("message")) {
-            processMessage(update["message"]);
+        if (update.contains("message"))
+        {
+            this->processMessage(update["message"]);
         }
 
         last_update_id_ = update_id;
