@@ -5,7 +5,7 @@ int main(int argc, char* argv[])
 {
     if (argc < 2)
     {
-        std::cout << "Invalid token\n";
+        std::cerr << "Invalid token\n";
         return EXIT_FAILURE;
     }
     try {
